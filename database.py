@@ -37,6 +37,8 @@ class ResearchPaper(Base):
     - Journal
     - DOI
     - DOI link (constructed as https://doi.org/{DOI})
+    - Gaps (keywords of the research gaps)
+    - Keywords (keywords of what the research is about)
     """
     __tablename__ = 'research_papers'
     
@@ -47,18 +49,23 @@ class ResearchPaper(Base):
     journal = Column(String(500), nullable=True, index=True)
     doi = Column(String(255), nullable=True, unique=True, index=True)
     doi_link = Column(String(300), nullable=True)  # Will be auto-generated from DOI
+    gaps = Column(Text, nullable=True, index=True)  # Keywords of research gaps
+    keywords = Column(Text, nullable=True, index=True)  # Keywords of what the research is about
     
     # Additional metadata fields for tracking
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
     
     def __init__(self, title: str, authors: Optional[str] = None, year: Optional[int] = None,
-                 journal: Optional[str] = None, doi: Optional[str] = None):
+                 journal: Optional[str] = None, doi: Optional[str] = None, 
+                 gaps: Optional[str] = None, keywords: Optional[str] = None):
         self.title = title
         self.authors = authors
         self.year = year
         self.journal = journal
         self.doi = doi
+        self.gaps = gaps
+        self.keywords = keywords
         
         # Auto-generate DOI link if DOI is provided
         if doi:
@@ -74,6 +81,8 @@ class ResearchPaper(Base):
             'journal': self.journal,
             'doi': self.doi,
             'doi_link': self.doi_link,
+            'gaps': self.gaps,
+            'keywords': self.keywords,
             'created_at': self.created_at.isoformat() if self.created_at else None,
             'updated_at': self.updated_at.isoformat() if self.updated_at else None
         }
@@ -210,7 +219,8 @@ class ResearchPaperRepository:
     
     def create_paper(self, title: str, authors: Optional[str] = None, 
                     year: Optional[int] = None, journal: Optional[str] = None,
-                    doi: Optional[str] = None) -> Optional[ResearchPaper]:
+                    doi: Optional[str] = None, gaps: Optional[str] = None,
+                    keywords: Optional[str] = None) -> Optional[ResearchPaper]:
         """
         Create a new research paper record.
         
@@ -220,6 +230,8 @@ class ResearchPaperRepository:
             year: Publication year
             journal: Journal name
             doi: DOI identifier
+            gaps: Keywords of research gaps (comma-separated string)
+            keywords: Keywords of what the research is about (comma-separated string)
             
         Returns:
             Optional[ResearchPaper]: Created paper record or None if failed
@@ -231,7 +243,9 @@ class ResearchPaperRepository:
                 authors=authors,
                 year=year,
                 journal=journal,
-                doi=doi
+                doi=doi,
+                gaps=gaps,
+                keywords=keywords
             )
             
             session.add(paper)

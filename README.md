@@ -89,13 +89,15 @@ from database import DatabaseManager, ResearchPaperRepository
 db_manager = DatabaseManager()
 repository = ResearchPaperRepository(db_manager)
 
-# Create a research paper
+# Create a research paper with gaps and keywords
 paper = repository.create_paper(
     title="Machine Learning in Medical Diagnosis",
     authors="Smith, J., Johnson, A.",
     year=2023,
     journal="Journal of Medical AI",
-    doi="10.1234/jmai.2023.001"
+    doi="10.1234/jmai.2023.001",
+    gaps="limited training data, model interpretability, clinical validation",
+    keywords="machine learning, medical diagnosis, artificial intelligence, healthcare"
 )
 
 # Query papers

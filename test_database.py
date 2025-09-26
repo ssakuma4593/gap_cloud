@@ -48,7 +48,9 @@ def test_database_models():
             authors="Smith, J., Johnson, A., Williams, R.",
             year=2023,
             journal="Journal of Medical AI",
-            doi="10.1234/jmai.2023.001"
+            doi="10.1234/jmai.2023.001",
+            gaps="limited training data, model interpretability, clinical validation",
+            keywords="machine learning, medical diagnosis, artificial intelligence, healthcare"
         )
         
         if not paper:
@@ -62,6 +64,8 @@ def test_database_models():
         print(f"   Journal: {paper.journal}")
         print(f"   DOI: {paper.doi}")
         print(f"   DOI Link: {paper.doi_link}")
+        print(f"   Gaps: {paper.gaps}")
+        print(f"   Keywords: {paper.keywords}")
         
         # Test retrieving paper by ID
         print("5. Testing paper retrieval by ID...")
@@ -87,14 +91,18 @@ def test_database_models():
                 'authors': 'Chen, L., Davis, M.',
                 'year': 2023,
                 'journal': 'Radiology and AI',
-                'doi': '10.1234/radai.2023.045'
+                'doi': '10.1234/radai.2023.045',
+                'gaps': 'standardization, regulatory approval, integration workflows',
+                'keywords': 'deep learning, radiology, medical imaging, computer vision'
             },
             {
                 'title': 'Natural Language Processing for Clinical Text',
                 'authors': 'Garcia, E., Wilson, P.',
                 'year': 2022,
                 'journal': 'Clinical Informatics Review',
-                'doi': '10.1234/cir.2022.078'
+                'doi': '10.1234/cir.2022.078',
+                'gaps': 'privacy concerns, multilingual support, structured data extraction',
+                'keywords': 'natural language processing, clinical text, information extraction, EMR'
             }
         ]
         

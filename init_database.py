@@ -88,28 +88,36 @@ def seed_sample_data(database_url: Optional[str] = None) -> bool:
                 'authors': 'Smith, J., Johnson, A., Williams, R.',
                 'year': 2023,
                 'journal': 'Journal of Medical AI',
-                'doi': '10.1234/jmai.2023.001'
+                'doi': '10.1234/jmai.2023.001',
+                'gaps': 'limited training data, model interpretability, clinical validation',
+                'keywords': 'machine learning, medical diagnosis, artificial intelligence, healthcare'
             },
             {
                 'title': 'Deep Learning in Radiology: Current Applications and Future Directions',
                 'authors': 'Chen, L., Davis, M., Thompson, K.',
                 'year': 2023,
                 'journal': 'Radiology and AI',
-                'doi': '10.1234/radai.2023.045'
+                'doi': '10.1234/radai.2023.045',
+                'gaps': 'standardization, regulatory approval, integration workflows',
+                'keywords': 'deep learning, radiology, medical imaging, computer vision'
             },
             {
                 'title': 'Natural Language Processing for Clinical Text Analysis',
                 'authors': 'Garcia, E., Wilson, P., Brown, S.',
                 'year': 2022,
                 'journal': 'Clinical Informatics Review',
-                'doi': '10.1234/cir.2022.078'
+                'doi': '10.1234/cir.2022.078',
+                'gaps': 'privacy concerns, multilingual support, structured data extraction',
+                'keywords': 'natural language processing, clinical text, information extraction, EMR'
             },
             {
                 'title': 'Federated Learning in Healthcare: Privacy-Preserving Machine Learning',
                 'authors': 'Anderson, T., Lee, H., Martinez, C.',
                 'year': 2022,
                 'journal': 'Healthcare Technology',
-                'doi': '10.1234/ht.2022.156'
+                'doi': '10.1234/ht.2022.156',
+                'gaps': 'communication overhead, data heterogeneity, security protocols',
+                'keywords': 'federated learning, privacy preservation, distributed computing, healthcare data'
             }
         ]
         
