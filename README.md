@@ -43,6 +43,18 @@ cp .env.example .env
 # Edit .env with your actual credentials
 ```
 
+4. Set up PostgreSQL database:
+```bash
+# Initialize database schema
+python init_database.py init
+
+# Seed with sample data (optional)
+python init_database.py seed
+
+# Check database status
+python init_database.py status
+```
+
 ### Usage
 
 #### Loading Data from S3
@@ -68,16 +80,43 @@ content = loader.load_abstracts_from_s3('your-bucket', 'abstracts.txt')
 print(f"Loaded {len(content)} characters")
 ```
 
+#### Database Operations
+
+```python
+from database import DatabaseManager, ResearchPaperRepository
+
+# Initialize database
+db_manager = DatabaseManager()
+repository = ResearchPaperRepository(db_manager)
+
+# Create a research paper
+paper = repository.create_paper(
+    title="Machine Learning in Medical Diagnosis",
+    authors="Smith, J., Johnson, A.",
+    year=2023,
+    journal="Journal of Medical AI",
+    doi="10.1234/jmai.2023.001"
+)
+
+# Query papers
+papers_2023 = repository.list_papers(year=2023)
+paper_by_doi = repository.get_paper_by_doi("10.1234/jmai.2023.001")
+```
+
 ## Project Structure
 
 - `s3_load.py` - AWS S3 data loading with error handling
 - `test_s3_load.py` - Simple test script for S3 functionality
+- `database.py` - PostgreSQL database models and utilities using SQLAlchemy
+- `init_database.py` - Database initialization and management scripts
+- `test_database.py` - Database functionality tests
 - `requirements.txt` - Python dependencies
 - `.env.example` - Environment variable template
 
 ## Security
 
 - All AWS credentials are managed via environment variables
+- Database credentials securely handled via environment variables
 - No hardcoded secrets in codebase
 - Secure credential chain support (IAM roles, AWS profiles)
 
@@ -88,7 +127,7 @@ This project follows incremental development with PR-based deliverables:
 1. ✅ S3 data loading implementation
 2. 🔄 Abstract parsing and structuring
 3. 🔄 LLM integration for gap extraction
-4. 🔄 PostgreSQL database setup
+4. ✅ PostgreSQL database setup
 5. 🔄 Interactive frontend development
 
 ## Contributing
