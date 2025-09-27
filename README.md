@@ -1,15 +1,15 @@
 # Medical Research Gap Analysis Tool
 
-A Python-based tool for analyzing research gaps in medical literature using AWS S3, OpenAI GPT, and in-memory storage.
+A Python-based tool for analyzing research gaps in medical literature using AWS S3, BERTopic, and in-memory storage.
 
 ## Overview
 
-This tool loads medical research abstracts from AWS S3, uses LLMs to extract research gaps, stores the data in memory, and provides interactive visualizations through word clouds organized by year and topic.
+This tool loads medical research abstracts from AWS S3, uses BERTopic for topic modeling and research gap analysis, stores the data in memory, and provides interactive visualizations through word clouds organized by year and topic.
 
 ## Features
 
 - **S3 Data Loading**: Secure loading of medical research abstracts from AWS S3
-- **LLM Integration**: Uses OpenAI GPT for intelligent gap extraction
+- **Topic Modeling**: Uses BERTopic for intelligent topic extraction and gap analysis
 - **In-Memory Storage**: Fast in-memory data structures for structured data storage
 - **Interactive Visualization**: Dash/Streamlit frontend with word clouds
 - **Security First**: Environment variable-based credential management
@@ -18,11 +18,8 @@ This tool loads medical research abstracts from AWS S3, uses LLMs to extract res
 ## Quick Start
 
 ### Prerequisites
-
-- Python 3.8+
 - AWS Account with S3 access
 - Python 3.8+ (no database required - uses in-memory storage)
-- OpenAI API key
 
 ### Installation
 

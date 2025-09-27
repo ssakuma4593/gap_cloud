@@ -4,7 +4,7 @@ This project involves building a Python-based research gap analysis and visualiz
 
     Parses abstracts into structured data (title, authors, year, text).
 
-    Uses OpenAI GPT (or similar LLM) to extract summaries of research gaps from abstracts.
+    Uses BERTopic for topic modeling and research gap analysis from abstracts.
 
     Stores extracted gaps and metadata in memory for fast access and analysis.
 
