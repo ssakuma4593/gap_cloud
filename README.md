@@ -1,124 +1,93 @@
-# Gap Cloud
+# Medical Research Gap Analysis Tool
 
-A research gap visualization tool that creates interactive word clouds from identified gaps in academic research, encouraging researchers to explore and fill these gaps.
+A Python-based tool for analyzing research gaps in medical literature using AWS S3, BERTopic, and in-memory storage.
 
-## Project Overview
+## Overview
 
-Gap Cloud is designed to help researchers and academics:
-- Identify research gaps in their field of study
-- Visualize gaps as interactive word clouds
-- Encourage collaboration and research direction
-- Provide data-driven insights into underexplored research areas
+This tool loads medical research abstracts from AWS S3, uses BERTopic for topic modeling and research gap analysis, stores the data in memory, and provides interactive visualizations through word clouds organized by year and topic.
 
 ## Features
 
-- **Gap Analysis**: Automated analysis of research literature to identify gaps
-- **Word Cloud Generation**: Interactive visualization of research gaps
-- **Data Integration**: Support for multiple data sources including databases and cloud storage
-- **Research Insights**: AI-powered analysis of research trends and opportunities
+- **S3 Data Loading**: Secure loading of medical research abstracts from AWS S3
+- **Topic Modeling**: Uses BERTopic for intelligent topic extraction and gap analysis
+- **In-Memory Storage**: Fast in-memory data structures for structured data storage
+- **Interactive Visualization**: Dash/Streamlit frontend with word clouds
+- **Security First**: Environment variable-based credential management
+- **Modular Design**: Clean separation of concerns across components
 
-## Project Structure
-
-```
-gap_cloud/
-├── app/                    # Main application code
-├── scripts/               # Utility scripts and data processing
-├── data/                  # Data files (excluded from git)
-├── tests/                 # Unit and integration tests
-├── docs/                  # Documentation
-├── requirements.txt       # Python dependencies
-├── .gitignore            # Git ignore rules
-└── README.md             # This file
-```
-
-## Technology Stack
-
-- **Python 3.8+**: Core programming language
-- **Pandas**: Data manipulation and analysis
-- **SQLAlchemy**: Database ORM
-- **PostgreSQL**: Database (via psycopg2-binary)
-- **OpenAI**: AI-powered text analysis
-- **AWS (Boto3)**: Cloud storage and services
-
-## Setup Instructions
+## Quick Start
 
 ### Prerequisites
-
-- Python 3.8 or higher
-- pip (Python package manager)
-- PostgreSQL database (optional, for production)
+- AWS Account with S3 access
+- Python 3.8+ (no database required - uses in-memory storage)
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ssakuma4593/gap_cloud.git
-   cd gap_cloud
-   ```
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd gap_cloud
+```
 
-2. **Create a virtual environment**
-   ```bash
-   python -m venv venv
-   
-   # On Windows
-   venv\Scripts\activate
-   
-   # On macOS/Linux
-   source venv/bin/activate
-   ```
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+3. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your actual credentials
+```
 
-4. **Set up environment variables** (create a `.env` file)
-   ```bash
-   # Database configuration
-   DATABASE_URL=postgresql://username:password@localhost:5432/gap_cloud
-   
-   # OpenAI API key
-   OPENAI_API_KEY=your_openai_api_key_here
-   
-   # AWS credentials (if using AWS services)
-   AWS_ACCESS_KEY_ID=your_aws_access_key
-   AWS_SECRET_ACCESS_KEY=your_aws_secret_key
-   AWS_DEFAULT_REGION=us-east-1
-   ```
+### Usage
 
-### Quick Start
+#### Loading Data from S3
 
-1. **Verify installation**
-   ```bash
-   python -c "import pandas, sqlalchemy, openai, boto3; print('All dependencies installed successfully!')"
-   ```
+```bash
+# Test S3 connection and load abstracts
+python s3_load.py your-bucket-name path/to/abstracts.txt --test-connection
 
-2. **Run tests** (when available)
-   ```bash
-   python -m pytest tests/
-   ```
+# Preview first 500 characters
+python s3_load.py your-bucket-name path/to/abstracts.txt --preview-chars 500
+```
+
+#### Python API Usage
+
+```python
+from s3_load import S3DataLoader
+
+# Initialize loader
+loader = S3DataLoader(region_name='us-east-1')
+
+# Load abstracts
+content = loader.load_abstracts_from_s3('your-bucket', 'abstracts.txt')
+print(f"Loaded {len(content)} characters")
+```
+
+## Project Structure
+
+- `s3_load.py` - AWS S3 data loading with error handling
+- `test_s3_load.py` - Simple test script for S3 functionality
+- `requirements.txt` - Python dependencies
+- `.env.example` - Environment variable template
+
+## Security
+
+- All AWS credentials are managed via environment variables
+- No hardcoded secrets in codebase
+- Secure credential chain support (IAM roles, AWS profiles)
 
 ## Development
 
-### Project Philosophy
+This project follows incremental development with PR-based deliverables:
 
-This project follows minimal change principles:
-- Make surgical, precise modifications
-- Preserve existing functionality
-- Focus on the core requirements
+1. ✅ S3 data loading implementation
+2. 🔄 Abstract parsing and structuring
+3. 🔄 LLM integration for gap extraction
+4. 🔄 In-memory data storage (no setup required)
+5. 🔄 Interactive frontend development
 
-### Contributing
+## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For questions or collaboration opportunities, please open an issue on GitHub.
+Please ensure all code follows security best practices and includes appropriate error handling and logging.
