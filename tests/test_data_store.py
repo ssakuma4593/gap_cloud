@@ -11,8 +11,8 @@ import tempfile
 import os
 import json
 from datetime import datetime
-from data_store import InMemoryDataStore, ResearchGap, get_data_store, add_abstract, add_gap
-from abstract_parser import AbstractRecord
+from scripts.data_store import InMemoryDataStore, ResearchGap, get_data_store, add_abstract, add_gap
+from scripts.abstract_parser import AbstractRecord
 
 
 class TestInMemoryDataStore(unittest.TestCase):

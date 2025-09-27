@@ -20,7 +20,7 @@ from dataclasses import dataclass, asdict
 from datetime import datetime
 import threading
 from collections import defaultdict, Counter
-from abstract_parser import AbstractRecord
+from .abstract_parser import AbstractRecord
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -361,7 +361,7 @@ if __name__ == "__main__":
     print("=== In-Memory Data Store Example ===\n")
     
     # Create sample data
-    from abstract_parser import AbstractRecord
+    from .abstract_parser import AbstractRecord
     
     # Sample abstract
     sample_abstract = AbstractRecord(
