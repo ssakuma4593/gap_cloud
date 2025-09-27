@@ -9,9 +9,7 @@ including unit tests for individual components and integration tests with sample
 import unittest
 from unittest.mock import patch
 import json
-from abstract_parser import AbstractParser, AbstractRecord, parse_abstract_text, parse_multiple_abstracts
-import json
-from abstract_parser import AbstractParser, AbstractRecord, parse_abstract_text, parse_multiple_abstracts
+from scripts.abstract_parser import AbstractParser, AbstractRecord, parse_abstract_text, parse_multiple_abstracts
 
 
 class TestAbstractParser(unittest.TestCase):

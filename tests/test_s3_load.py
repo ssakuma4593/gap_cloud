@@ -6,7 +6,7 @@ Demonstrates basic usage patterns for the S3DataLoader class.
 
 import os
 import sys
-from s3_load import S3DataLoader
+from scripts.s3_load import S3DataLoader
 
 def test_s3_loader():
     """

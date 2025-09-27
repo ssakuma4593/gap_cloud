@@ -46,16 +46,16 @@ cp .env.example .env
 
 ```bash
 # Test S3 connection and load abstracts
-python s3_load.py your-bucket-name path/to/abstracts.txt --test-connection
+python scripts/s3_load.py your-bucket-name path/to/abstracts.txt --test-connection
 
 # Preview first 500 characters
-python s3_load.py your-bucket-name path/to/abstracts.txt --preview-chars 500
+python scripts/s3_load.py your-bucket-name path/to/abstracts.txt --preview-chars 500
 ```
 
 #### Python API Usage
 
 ```python
-from s3_load import S3DataLoader
+from scripts.s3_load import S3DataLoader
 
 # Initialize loader
 loader = S3DataLoader(region_name='us-east-1')
@@ -67,8 +67,13 @@ print(f"Loaded {len(content)} characters")
 
 ## Project Structure
 
-- `s3_load.py` - AWS S3 data loading with error handling
-- `test_s3_load.py` - Simple test script for S3 functionality
+- `scripts/s3_load.py` - AWS S3 data loading with error handling
+- `scripts/abstract_parser.py` - Medical abstract parsing functionality
+- `scripts/data_store.py` - In-memory data storage implementation
+- `scripts/setup_secrets.py` - AWS Secrets Manager configuration
+- `tests/test_s3_load.py` - Test script for S3 functionality
+- `tests/test_abstract_parser.py` - Tests for abstract parsing
+- `tests/test_data_store.py` - Tests for data storage
 - `requirements.txt` - Python dependencies
 - `.env.example` - Environment variable template
 
