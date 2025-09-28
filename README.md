@@ -1,5 +1,6 @@
 # Medical Research Gap Analysis Tool
-<img width="899" height="994" alt="Screenshot 2025-09-27 at 10 23 13 PM" src="https://github.com/user-attachments/assets/78bc6007-e5bf-4cf0-9d35-e4efdd2316bf" />
+<img width="1251" height="1305" alt="Screenshot 2025-09-27 at 11 10 13 PM" src="https://github.com/user-attachments/assets/e977bfa3-5630-40e7-babf-cd5a80a95540" />
+
 <img width="660" height="676" alt="Screenshot 2025-09-27 at 10 24 21 PM" src="https://github.com/user-attachments/assets/4315d374-d458-49c7-a9e5-3df533fb87a7" />
 
 
