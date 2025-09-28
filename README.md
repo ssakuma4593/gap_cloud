@@ -3,9 +3,26 @@
 
 <img width="660" height="676" alt="Screenshot 2025-09-27 at 10 24 21 PM" src="https://github.com/user-attachments/assets/4315d374-d458-49c7-a9e5-3df533fb87a7" />
 
-
-
 A Python-based tool for analyzing research gaps in medical literature using AWS S3, BERTopic, and in-memory storage.
+
+### 🌐 **Live Interactive Demo**
+
+**Try the visualizations online:** https://ssakuma4593.github.io/gap_cloud/
+
+The interactive visualizations are hosted on GitHub Pages, allowing anyone to explore the medical AI research topics without installing anything. The demo includes all 5 visualization types with full interactivity.
+
+### Sample Topic Results
+
+The enhanced BERTopic analysis now identifies meaningful medical research themes like:
+
+- **Cognitive Robotics & AI**: `cognitive; robot; robots; humans; neuroscience; brain; agents`
+- **Cardiovascular Medicine**: `cardiovascular; ecg; heart; cardiac; cardiology; mortality`
+- **Drug Discovery**: `drug; discovery; molecular; graph; chemical; pharmaceutical`
+- **Ophthalmology**: `ophthalmology; eye; glaucoma; singapore; dr; images; oct`
+- **Dental AI**: `dental; dentistry; oral; radiographs; images; segmentation`
+- **Medical Imaging**: `radiology; imaging; radiologists; diagnostic; reports`
+
+The similarity heatmap reveals relationships between these topics, helping identify research gaps and cross-disciplinary opportunities.
 
 ## Overview
 
@@ -177,25 +194,6 @@ Navigate to `data/visualizations/index.html` or run `pipeline.open_visualization
 5. **🌳 Topic Hierarchy**: Tree-like view of how topics relate at different levels
 
 All visualizations support zooming, hovering for details, and interactive exploration.
-
-### 🌐 **Live Interactive Demo**
-
-**Try the visualizations online:** https://ssakuma4593.github.io/gap_cloud/
-
-The interactive visualizations are hosted on GitHub Pages, allowing anyone to explore the medical AI research topics without installing anything. The demo includes all 5 visualization types with full interactivity.
-
-### Sample Topic Results
-
-The enhanced BERTopic analysis now identifies meaningful medical research themes like:
-
-- **Cognitive Robotics & AI**: `cognitive; robot; robots; humans; neuroscience; brain; agents`
-- **Cardiovascular Medicine**: `cardiovascular; ecg; heart; cardiac; cardiology; mortality`
-- **Drug Discovery**: `drug; discovery; molecular; graph; chemical; pharmaceutical`
-- **Ophthalmology**: `ophthalmology; eye; glaucoma; singapore; dr; images; oct`
-- **Dental AI**: `dental; dentistry; oral; radiographs; images; segmentation`
-- **Medical Imaging**: `radiology; imaging; radiologists; diagnostic; reports`
-
-The similarity heatmap reveals relationships between these topics, helping identify research gaps and cross-disciplinary opportunities.
 
 ## Development Status
 
