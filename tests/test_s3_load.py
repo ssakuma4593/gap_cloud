@@ -18,7 +18,7 @@ def test_s3_loader():
     
     # Actual configuration for your S3 bucket and file
     BUCKET_NAME = "research-gap"  # Your S3 bucket for research data
-    FILE_KEY = "abstract-artificial-set.txt"  # Your actual abstracts file
+    FILE_KEY = "abstract-artificial-set (1).txt"  # Your actual abstracts file
     
     print("⚠️  Note: This is a test script. Please update BUCKET_NAME and FILE_KEY")
     print("    with your actual S3 bucket and file path before running.\n")

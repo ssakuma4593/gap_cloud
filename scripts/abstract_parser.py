@@ -374,7 +374,8 @@ class AbstractParser:
         citations = citation_pattern.findall(raw_text)
         
         if len(citations) > 1:
-            # Multiple abstracts - use the existing multiple parsing logic
+            # Multiple abstracts - use the existing multiple parsing logic with auto-detection
+            logger.info(f"Detected multiple abstracts ({len(citations)} citations) - using multiple parsing")
             return self.parse_multiple_abstracts(raw_text, "\n\n\n", include_raw)
         else:
             # Single abstract - parse it
@@ -477,7 +478,7 @@ class AbstractParser:
         
         Args:
             raw_text: Raw text containing multiple abstracts
-            separator: Separator between abstracts (default: triple newline)
+            separator: Separator between abstracts (default: triple newline, but will auto-detect numbered citations)
             include_raw: Whether to include raw text in records
             
         Returns:
@@ -487,8 +488,20 @@ class AbstractParser:
             logger.warning("Empty or whitespace-only text provided")
             return []
         
-        # Split the text into individual abstracts
-        abstract_texts = raw_text.split(separator)
+        # Check for numbered citations pattern (better for PubMed format)
+        citation_pattern = re.compile(r'^\d+\.\s+.*?\d{4}', re.MULTILINE)
+        citations = citation_pattern.findall(raw_text)
+        
+        if len(citations) > 1:
+            logger.info(f"Detected {len(citations)} numbered citations - using citation-based splitting")
+            # Split by numbered citations at the beginning of lines
+            split_pattern = re.compile(r'\n(?=\d+\.\s)')
+            abstract_texts = split_pattern.split(raw_text)
+        else:
+            logger.info("No multiple citations detected - using separator-based splitting")
+            # Fall back to separator-based splitting
+            abstract_texts = raw_text.split(separator)
+        
         records = []
         
         for i, abstract_text in enumerate(abstract_texts, 1):
@@ -503,6 +516,8 @@ class AbstractParser:
                 records.append(record)
             else:
                 logger.warning(f"Failed to parse abstract {i}")
+                # Debug: show first 200 characters of failed abstract
+                logger.debug(f"Failed abstract text (first 200 chars): {abstract_text[:200]}...")
         
         logger.info(f"Successfully parsed {len(records)} out of {len(abstract_texts)} abstracts")
         return records
