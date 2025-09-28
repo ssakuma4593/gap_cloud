@@ -177,6 +177,12 @@ Navigate to `data/visualizations/index.html` or run `pipeline.open_visualization
 
 All visualizations support zooming, hovering for details, and interactive exploration.
 
+### 🌐 **Live Interactive Demo**
+
+**Try the visualizations online:** https://ssakuma4593.github.io/gap_cloud/
+
+The interactive visualizations are hosted on GitHub Pages, allowing anyone to explore the medical AI research topics without installing anything. The demo includes all 5 visualization types with full interactivity.
+
 ### Sample Topic Results
 
 The enhanced BERTopic analysis now identifies meaningful medical research themes like:
