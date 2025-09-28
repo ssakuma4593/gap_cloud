@@ -128,7 +128,7 @@ viz_files = create_topic_visualizations(topic_model, docs, topics, "visualizatio
 ### Core Pipeline
 - `research_gap_pipeline.py` - **Main pipeline orchestrator** with 5-step process
 - `scripts/theme_model.py` - **BERTopic analysis** with interactive visualizations
-- `scripts/abstract_parser.py` - **Medical abstract parsing** with PubMed format support and numbered citation detection
+- `scripts/abstract_parser.py` - **Medical abstract parsing** with text format support and numbered citation detection
 - `scripts/s3_load.py` - **AWS S3 data loading** with error handling
 
 ### Data & Output
