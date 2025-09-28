@@ -65,6 +65,13 @@ This will:
 4. Export results to CSV files in `data/` directory
 5. Generate interactive HTML visualizations in `data/visualizations/`
 
+#### Data Source
+
+The analysis uses medical research abstracts from **PubMed** obtained by:
+1. Searching for "artificial intelligence" at: https://pubmed.ncbi.nlm.nih.gov/?term=artificial+intelligence&filter=simsearch2.ffrft&size=100
+2. Downloading all abstracts as a text file in PubMed format
+3. The abstracts follow standard PubMed citation format with numbered entries, author affiliations, and structured abstract text
+
 #### Individual Component Usage
 
 ```bash
@@ -117,7 +124,7 @@ viz_files = create_topic_visualizations(topic_model, docs, topics, "visualizatio
 ### Core Pipeline
 - `research_gap_pipeline.py` - **Main pipeline orchestrator** with 5-step process
 - `scripts/theme_model.py` - **BERTopic analysis** with interactive visualizations
-- `scripts/abstract_parser.py` - **Medical abstract parsing** with numbered citation support
+- `scripts/abstract_parser.py` - **Medical abstract parsing** with PubMed format support and numbered citation detection
 - `scripts/s3_load.py` - **AWS S3 data loading** with error handling
 
 ### Data & Output
